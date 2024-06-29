@@ -1,6 +1,6 @@
 # The Rust Programming Language - Book
 
-[Link do livro](https://doc.rust-lang.org/book/)
+[Link do livro](https://doc.rust-lang.org/beta/book/)
 
 by Steve Klabnik and Carol Nichols, with contributions from the Rust Community
 
