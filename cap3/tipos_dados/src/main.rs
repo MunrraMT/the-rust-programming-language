@@ -3,6 +3,8 @@ fn main() {
     operacoes_numericas();
     boleano();
     tipo_caractere();
+    tipo_composto_tupla();
+    tipo_composto_array();
 }
 
 fn tipo_flutuante() {
