@@ -1,7 +1,9 @@
 use std::{
-    env, fs,
+    env, process,
     time::{SystemTime, UNIX_EPOCH},
 };
+
+use minigrep;
 
 fn main() {
     let start = SystemTime::now()
@@ -10,15 +12,18 @@ fn main() {
         .as_micros();
 
     let args: Vec<String> = env::args().collect();
-    let query = &args[1];
-    let file_path = &args[2];
+    let config = minigrep::Config::build(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {err}");
+        process::exit(1);
+    });
 
-    println!("Searching for {query}");
-    println!("In file {file_path}");
+    println!("Searching for {}", config.query);
+    println!("In file {}", config.file_path);
 
-    let content = fs::read_to_string(file_path).expect("Should have been able to read the file");
-
-    println!("With text:\n{content}");
+    if let Err(e) = minigrep::run(config) {
+        println!("Application error: {e}");
+        process::exit(1);
+    }
 
     let end = SystemTime::now()
         .duration_since(UNIX_EPOCH)
