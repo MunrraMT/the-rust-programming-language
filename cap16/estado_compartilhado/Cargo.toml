@@ -1,0 +1,6 @@
+[package]
+name = "estado_compartilhado"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
